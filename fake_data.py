@@ -6,12 +6,8 @@ fake = Faker("pt_BR")
 
 
 def generate_random_due_date():
-    return (
-        (datetime.now() + timedelta(hours=random.randint(1, 24)))
-        if (datetime.now() + timedelta(hours=random.randint(1, 24))) > datetime.now()
-        else (datetime.now() + timedelta(hours=1))
-    )
-
+    # Generate a date-time upfront from now
+    return datetime.now() + timedelta(hours=random.randint(24, 25))
 
 def generate_random_invoice():
     # Generate a random CPF (Brazilian tax identification number)

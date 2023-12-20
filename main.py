@@ -37,6 +37,7 @@ class InvoiceScheduler:
                 account_type="payment",
                 tags=[first_name, f"invoice/{invoice.id}"],
                 description=f"Payment for invoice {invoice.id}",
+                fee=invoice.fee,
             )
             transfer = starkbank.transfer.create([new_transfer])
             print(f"Transfer {transfer} sent.")
@@ -55,7 +56,7 @@ class InvoiceScheduler:
 
     # Schedules invoice creation at random intervals
     def schedule_invoices(self):
-        interval_seconds = random.uniform(15, 22.5)
+        interval_seconds = random.uniform(15, 22.5) * 60
         interval_minutes = round(interval_seconds / 60)
         print(f"Scheduled invoice after {interval_minutes} minutes approximately")
 
@@ -73,7 +74,7 @@ class InvoiceScheduler:
     # Runs the entire scheduler
     def run_scheduler(self):
         # Schedules batch invoice transfers to run every 3 hours
-        schedule.every(120).seconds.do(self.transfer_batch_invoices)
+        schedule.every(10800).seconds.do(self.transfer_batch_invoices)
 
         # Main loop that handles scheduling invoice creation and batch transfers
         while True:
