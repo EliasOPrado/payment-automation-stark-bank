@@ -1,0 +1,13 @@
+certifi==2023.11.17
+charset-normalizer==3.3.2
+django-environ==0.11.2
+Faker==21.0.0
+idna==3.6
+python-dateutil==2.8.2
+requests==2.31.0
+schedule==1.2.1
+six==1.16.0
+starkbank==2.22.0
+starkbank-ecdsa==2.2.0
+starkcore==0.1.1
+urllib3==2.1.0
